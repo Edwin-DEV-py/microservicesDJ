@@ -12,7 +12,7 @@ connection = pika.BlockingConnection(params)
 
 channel = connection.channel()
 
-channel.queue_declare(queue='main')#implementa el protocolo de mensajeria AMQP para declarar una cola.
+channel.queue_declare(queue='main')#anadir durable=True para que los mensaje lleguen a pesar de que este apagado#implementa el protocolo de mensajeria AMQP para declarar una cola.
 #una cola es un destino donde los productores envian mensajes y los consumidores reciben. este protocolo crea una cola.
 
 def callback(ch, method,properties, body):
