@@ -4,27 +4,20 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: 'python manage.py runserver 0.0.0.0:8001'
+    command: 'python manage.py runserver 0.0.0.0:8002'
     ports:
-      - 8001:8000
+      - 8002:8002
     volumes:
       - .:/app
     depends_on:
       - db
 
-  queue:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: 'python consumer.py'
-    depends_on:
-      - db
   
   db:
     image: mysql:8.0
     restart: always
     environment:
-      MYSQL_DATABASE: main
+      MYSQL_DATABASE: vista
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - .dbdata:/var/lib/mysql
